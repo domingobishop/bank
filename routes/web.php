@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+if (env('APP_ENV') !== 'local') {
+    URL::forceScheme('https');
+}
+
 Route::get('/', 'LedgerController@index')->name('index');
 Route::post('/create', 'LedgerController@store')->name('store');
-Route::delete('/delete/{id}', 'LedgerController@destroy')->name('delete');;
+Route::delete('/delete/{id}', 'LedgerController@destroy')->name('delete');
