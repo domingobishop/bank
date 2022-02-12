@@ -35,18 +35,20 @@
                                     </div>
                                 </div>
                             @endif
-                                @if (isset($data['deleted']))
-                                    <div class="col-lg-12">
-                                        <div class="alert alert-danger" role="alert">
-                                            <h2>Record {{ $data['deleted']['type'] }} #{{ $data['deleted']['id'] }} deleted</h2>
-                                        </div>
+                            @if (isset($data['deleted']))
+                                <div class="col-lg-12">
+                                    <div class="alert alert-danger" role="alert">
+                                        <h2>Record {{ $data['deleted']['type'] }} #{{ $data['deleted']['id'] }} deleted</h2>
                                     </div>
-                                @endif
+                                </div>
+                            @endif
+                            @if (isset($data['all'][0]['current_balance']))
                             <div class="col-lg-12">
                                 <div class="alert alert-info" role="alert">
                                     <h2>Current balance £{{ $data['all'][0]['current_balance'] }}</h2>
                                 </div>
                             </div>
+                            @endif
                             <div class="col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
