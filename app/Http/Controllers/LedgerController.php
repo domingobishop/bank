@@ -50,14 +50,22 @@ class LedgerController extends Controller
 
         $previous = Ledger::latest()->first();
 
-        if ($record['type'] == 'Credit')
+        if (isset($previous))
         {
-            $record['current_balance'] = $previous['current_balance'] + $record['amount'];
+            if ($record['type'] == 'Credit')
+            {
+                $record['current_balance'] = $previous['current_balance'] + $record['amount'];
+            }
+            else
+            {
+                $record['current_balance'] = $previous['current_balance'] - $record['amount'];
+            }
         }
         else
         {
-            $record['current_balance'] = $previous['current_balance'] - $record['amount'];
+            $record['current_balance'] = $record['amount'];
         }
+
 
         $data['new'] = Ledger::create($record);
 
