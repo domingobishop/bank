@@ -82,16 +82,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
-                                <table class="table table-striped">
+                            <div class="col-lg-8 table-responsive">
+                                <table class="table table-striped table-hover">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Date</th>
+                                        <th scope="col">Balance</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Type</th>
                                         <th scope="col">Amount</th>
-                                        <th scope="col">Balance</th>
                                         <th scope="col">Notes</th>
                                         <th scope="col"></th>
                                     </tr>
@@ -101,11 +101,11 @@
                                         @foreach($data['all'] as $item )
                                             <tr>
                                                 <th scope="row">{{ $item['id'] }}</th>
-                                                <td>{{ $item['created_at'] }}</td>
+                                                <td>{{ date('d/m/Y', strtotime($item['created_at'])) }}</td>
+                                                <td>{{ $item['current_balance'] }}</td>
                                                 <td>{{ $item['transaction_by'] }}</td>
                                                 <td>{{ $item['type'] }}</td>
                                                 <td>{{ $item['amount'] }}</td>
-                                                <td>{{ $item['current_balance'] }}</td>
                                                 <td>{{ $item['notes'] }}</td>
                                                 <td class="text-right">
                                                     @if ($data['all'][0]['id']==$item['id'])
