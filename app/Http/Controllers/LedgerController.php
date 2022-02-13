@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LedgerPostRequest;
+use App\Http\Requests\LoginPostRequest;
 use App\Ledger;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -31,11 +32,23 @@ class LedgerController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param LoginPostRequest $request
+     * @return RedirectResponse
      */
-    public function create()
+    public function login(LoginPostRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        if ( $data['password'] == 'chris4seeta' )
+        {
+            session()->put('authorised', true);
+
+            return redirect()->route('index');
+        }
+        else
+        {
+            return redirect()->route('index')->with('error', 'Invalid password');
+        }
     }
 
     /**

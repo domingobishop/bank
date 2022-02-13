@@ -19,4 +19,5 @@ if (env('APP_ENV') !== 'local') {
 
 Route::get('/', 'LedgerController@index')->name('index');
 Route::post('/create', 'LedgerController@store')->name('store');
+Route::post('/login', 'LedgerController@login')->name('login');
 Route::delete('/delete/{id}', 'LedgerController@destroy')->name('delete');
